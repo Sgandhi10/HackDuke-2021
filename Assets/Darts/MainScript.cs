@@ -11,10 +11,15 @@ public class MainScript : MonoBehaviour
     public GameObject Dart;
     public bool answered = false;
     private int score = 0;
+    private bool _canAnswer = true;
     // Start is called before the first frame update
     void Start()
     {
         questions = new QuestionDict();
+        Instantiate(Dart, transform.position, Quaternion.identity, this.transform);
+        Instantiate(Dart, transform.position, Quaternion.identity, this.transform);
+        Instantiate(Dart, transform.position, Quaternion.identity, this.transform);
+        Instantiate(Dart, transform.position, Quaternion.identity, this.transform);
         Instantiate(Dart, transform.position, Quaternion.identity, this.transform);
         questions.GenerateQuestion();
         updateText();
@@ -28,7 +33,7 @@ public class MainScript : MonoBehaviour
     }
     public void onAnswer(int a)
     {
-
+        if (!_canAnswer) return;
         if (CurrentQuestion.Answer != a)
         {
             // WRONG!!!
@@ -59,8 +64,8 @@ public class MainScript : MonoBehaviour
             Debug.Log("Hit target!" + a);
             this.GetComponentsInChildren<Board>()[a].GetComponents<Board>()[0].SetColor(Color.green);
             this.GetComponentInChildren<Canvas>().GetComponent<Text>().text = "Score: " + ++score;
+            _canAnswer = false;
             StartCoroutine(ExampleCoroutine(a, 2));
-
             // }
         }
     }
@@ -82,6 +87,6 @@ public class MainScript : MonoBehaviour
         this.GetComponentsInChildren<Board>()[a].GetComponents<Board>()[0].ResetColor();
 
         updateText();
-
+        _canAnswer = true;
     }
 }
