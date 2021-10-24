@@ -6,18 +6,45 @@ using Leap.Unity.Interaction;
 public class Dart : InteractionBehaviour
 {
     Vector3 _defaultPosition;
+    Quaternion _defaultRotation;
+    private bool _wasGrasped = false;
     private MainScript parent;
     // Start is called before the first frame update
     void Start()
     {
         _defaultPosition = this.transform.position;
+        _defaultRotation = this.transform.rotation;
         parent = this.transform.parent.GetComponent<MainScript>();
+        this.rigidbody.constraints = RigidbodyConstraints.FreezeAll;
     }
 
     // Update is called once per frame
     void Update()
     {
         CheckY();
+
+        if (!_wasGrasped || isGrasped)
+        {
+            this.rigidbody.constraints = RigidbodyConstraints.None;
+            _wasGrasped = true;
+        }
+        else
+        {
+            if (_wasGrasped)
+            {
+                this.ignoreContact = true;
+                StartCoroutine("DelayContact");
+            }
+        }
+
+
+    }
+
+    IEnumerable DelayContact()
+    {
+        yield return new WaitForSeconds(0.1f);
+        _wasGrasped = false;
+        this.ignoreContact = false;
     }
     void CheckY()
     {
@@ -27,8 +54,11 @@ public class Dart : InteractionBehaviour
     void Respawn()
     {
         this.transform.position = _defaultPosition;
+        this.transform.rotation = _defaultRotation;
         rigidbody.velocity = Vector3.zero;
         rigidbody.angularVelocity = Vector3.zero;
+        this.rigidbody.constraints = RigidbodyConstraints.FreezeAll;
+
     }
     void OnTriggerEnter(Collider other)
     {

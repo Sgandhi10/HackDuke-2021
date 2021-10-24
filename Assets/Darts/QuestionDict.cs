@@ -26,7 +26,7 @@ public class QuestionDict
         {"Sulfate ion", "SO4 2-" },
         {"Sulfite ion", "SO3 2-" },
         {"Thiosulfate ion", "S2O3 2-" },
-        {"Peroixide ion", "O2 2-" },
+        {"Peroxide ion", "O2 2-" },
         {"Chromate ion", "CrO4 2-" },
         {"Dichromate ion", "Cr2O7 2-" },
         {"Oxalate", "C2O4 2-" },
