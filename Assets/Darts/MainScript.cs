@@ -12,6 +12,8 @@ public class MainScript : MonoBehaviour
     public bool answered = false;
     private int score = 0;
     // Start is called before the first frame update
+    private int counter = 0;
+
     void Start()
     {
         questions = new QuestionDict();
@@ -66,6 +68,8 @@ public class MainScript : MonoBehaviour
     }
     public void updateText()
     {
+        if(Globals.NumQuestions>0 && counter >=Globals.NumQuestions)
+            UnityEngine.SceneManagement.SceneManager.LoadScene("EndScreen");
         answered = false;
         int i = 0;
         this.GetComponentsInChildren<TextMeshPro>()[0].text = CurrentQuestion.Text;
@@ -74,6 +78,7 @@ public class MainScript : MonoBehaviour
         {
             o.GetComponentInChildren<TextMeshPro>().text = this.CurrentQuestion.Choices[i++];
         }
+        counter ++;
     }
 
     IEnumerator ExampleCoroutine(int a, int time)
