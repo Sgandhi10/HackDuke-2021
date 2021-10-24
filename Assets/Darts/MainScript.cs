@@ -17,10 +17,6 @@ public class MainScript : MonoBehaviour
     {
         questions = new QuestionDict();
         Instantiate(Dart, transform.position, Quaternion.identity, this.transform);
-        Instantiate(Dart, transform.position, Quaternion.identity, this.transform);
-        Instantiate(Dart, transform.position, Quaternion.identity, this.transform);
-        Instantiate(Dart, transform.position, Quaternion.identity, this.transform);
-        Instantiate(Dart, transform.position, Quaternion.identity, this.transform);
         questions.GenerateQuestion();
         updateText();
         this.GetComponentInChildren<Canvas>().GetComponent<Text>().text = "Score: " + score;
