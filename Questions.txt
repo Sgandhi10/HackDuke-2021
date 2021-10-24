@@ -1,0 +1,4 @@
+Question question1 = new Question("Chemical formula for bicarbonate ion?", "HCO3 1-", "HClO4", "H2O", "HCO2 1-", 'A');
+Question question2 = new Question("Chemical formula for hydrochloric acid?", "HBr", "HCl", "H2SO4", "HCl2", 'B');
+Question question3 = new Question("Chemical formula for sodium hydroixide?", "SoHo", "NaBr", "LiOH", "NaOH", 'D');
+Question question4 = new Question("What is the oxidation number of sulfur in sulfate?", "+2", "-4", "+6", "-8", 'C');
