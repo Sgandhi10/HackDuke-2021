@@ -18,6 +18,7 @@ public class MainScript : MonoBehaviour
         Instantiate(Dart, transform.position, Quaternion.identity, this.transform);
         questions.GenerateQuestion();
         updateText();
+        this.GetComponentInChildren<Canvas>().GetComponent<Text>().text = "Score: " + score;
     }
 
     // Update is called once per frame
@@ -55,10 +56,10 @@ public class MainScript : MonoBehaviour
             // }
             // else
             // {
-                Debug.Log("Hit target!" + a);
-                this.GetComponentsInChildren<Board>()[a].GetComponents<Board>()[0].SetColor(Color.green);
-                this.GetComponentInChildren<Canvas>().GetComponent<Text>().text = "Score: " + score++;
-                StartCoroutine(ExampleCoroutine(a, 2));
+            Debug.Log("Hit target!" + a);
+            this.GetComponentsInChildren<Board>()[a].GetComponents<Board>()[0].SetColor(Color.green);
+            this.GetComponentInChildren<Canvas>().GetComponent<Text>().text = "Score: " + ++score;
+            StartCoroutine(ExampleCoroutine(a, 2));
 
             // }
         }
