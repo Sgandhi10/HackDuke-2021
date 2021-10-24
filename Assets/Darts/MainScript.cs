@@ -69,7 +69,8 @@ public class MainScript : MonoBehaviour
     }
     public void updateText()
     {
-        if(Globals.NumQuestions>0 && counter >=Globals.NumQuestions)
+        counter ++;
+        if(Globals.NumQuestions>0 && counter >Globals.NumQuestions)
             UnityEngine.SceneManagement.SceneManager.LoadScene("EndScreen");
         answered = false;
         int i = 0;
@@ -79,7 +80,7 @@ public class MainScript : MonoBehaviour
         {
             o.GetComponentInChildren<TextMeshPro>().text = this.CurrentQuestion.Choices[i++];
         }
-        counter ++;
+        
     }
 
     IEnumerator ExampleCoroutine(int a, int time)
