@@ -7,31 +7,30 @@ public class QuestionDict
     private List<int> left;
     public Question LastQuestion { get; set; }
     private IDictionary<string, string> questions = new Dictionary<string, string>() {
-        {"Bicarbonate ion", "HCO3 1-" },
-        {"Acetate ion", "C2H3O2 1-" },
-        {"Nitrate ion", "NO3 1-" },
-        {"Nitrite ion", "NO2 1-" },
-        {"Permanganate ion", "MnO4 1-" },
-        {"Cyanide ion", "CN 1-" },
-        {"Cyanate ion", "OCN 1-" },
-        {"Hydroxide ion", "OH 1-" },
-        {"Perchlorate ion", "ClO4 1-" },
-        {"Chlorate ion", "ClO3 1-" },
-        {"Chlorite ion", "ClO2 1-" },
-        {"Hypochlorite ion", "ClO 1-" },
-        {"Ammonium ion", "NH4 1+" },
-        {"Selenate ion", "SeO4 2-" },
-        {"Tellurate ion", "TeO4 2-" },
-        {"Carbonate ion", "CO3 2-" },
-        {"Sulfate ion", "SO4 2-" },
-        {"Sulfite ion", "SO3 2-" },
-        {"Thiosulfate ion", "S2O3 2-" },
-        {"Peroxide ion", "O2 2-" },
-        {"Chromate ion", "CrO4 2-" },
-        {"Dichromate ion", "Cr2O7 2-" },
-        {"Oxalate", "C2O4 2-" },
-        {"Phosphate ion", "PO4 3-" }
-    };
+        {"The KISS rule of investing teaches:", "Keep it simple, stupid" },
+        {"Which is an example of saving?", "Putting $100 of monthly salary into an interest-bearing account." },
+        {"Which is not a good investment?", "Gold" },
+        {"What is line of credit?", "An amount someone can borrow on a credit card" },
+        {"The risk return ratio says: ", "When the risk goes up, the return generally will go up." },
+        {"What is annual percentage rate?", "Interest rate changed per year to a person borrowing money" },
+        {"What is credt?", "When goods, services, or money are receiving in exchange for a promise to pay back to a definite sum of money at a future date" },
+        {"A savings account with a certificate is a:", "C. D." },
+        {"What is a bull market?", "When stock prices go up." },
+        {"What is a bear market?", "When stock prices drop 20%+" },
+        {"Spreading in investments widely across different industry sectors to reduce risk is called?", "Diversification" },
+        {"When making a purchase on credit, the original amount borrowed is called?", "Principal" },
+        {"What is the general relationship between risk and return?", "The higher the risk, the higher the return" },
+        {"What is the Roth IRA maximum yearly contrbution?", "$6000" },
+        {"What is the 401(k) maximum yearly contribution?", "$58,000" },
+        {"What is a 401(k)?", "Retirement savings and investment plan provided by employer." },
+        {"What is a Roth IRA?", "Individual retirement account usually not taxed upon." },
+        {"What is an ETF?", "A security that tracks assets that are sold on the exchange." },
+        {"What is a Credit Premium?", "Excess return an investor obtains for holding non-governmental bonds." },
+        {"The ease with which an asset can be turned into cash", "Liquidity" },
+        {"The purpose of your insurance is to ________ your assets", "Protect" },
+        {"What does the opportunity cost of a purchase tell you?", "The cost of the purchase plus the cost of not doing or purchasing something else" },
+        {"A nonprofit financial institution that is owned by its members and organized for their benefit", "Credit Union" },
+        {"When money is earned on the total amount in the account including the initial deposit and interest that has already been credited to the account", "Compounding Interesting" }};
 
     public QuestionDict()
     {
@@ -78,10 +77,10 @@ public class QuestionDict
         int rand = Random.Range(0, left.Count);
 
         string name = keyList[left[rand]];
-        left.Remove(rand);
+        left.RemoveAll((i) => i == left[rand]);
         string symbol = questions[name];
 
-        string question = "Chemical Equation of " + name + "?";
+        string question = name;
 
         List<string> list = new List<string>();
         list.Add(symbol);
