@@ -36,12 +36,13 @@ public class MainScript : MonoBehaviour
         if (currIndex <= questions.Count && questions[currIndex].Answer != a)
         {
             // WRONG!!!
-            if(!answered){
+            if (!answered)
+            {
                 Debug.Log("Cringe!");
                 this.GetComponentsInChildren<Board>()[a].GetComponents<Board>()[0].SetColor(Color.red);
                 StartCoroutine(ExampleCoroutine(a, 1));
             }
-            
+
 
         }
         else
@@ -52,8 +53,10 @@ public class MainScript : MonoBehaviour
             {
                 // DONE!!!
                 this.GetComponentsInChildren<TextMeshPro>()[0].text = "u r smat";
-                for(int i = 0; i<4; i++){
-                    this.GetComponentsInChildren<Board>()[a].GetComponents<Board>()[0].SetColor(Color.green);}
+                for (int i = 0; i < 4; i++)
+                {
+                    this.GetComponentsInChildren<Board>()[i].GetComponents<Board>()[0].SetColor(Color.green);
+                }
             }
             else
             {
